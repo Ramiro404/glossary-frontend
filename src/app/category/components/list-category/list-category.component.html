@@ -1,0 +1,14 @@
+<p>list-category works!</p>
+<a routerLink="new-category">Create new category</a>
+<ul>
+    <li 
+        *ngFor="let cat of categories">
+        <a [routerLink]="['../word',cat.id]">{{cat.name}}</a>
+        <a [routerLink]="['update-category',cat.id]">Edit</a>
+        <button type="button" (click)="onDelete(cat.id)">Delete</button>
+    </li>
+</ul>
+<p *ngIf="categories.length === 0">
+    You have no categories. <a routerLink="new-category">Create one</a>
+</p>
+<p>{{errorMsg}}</p>

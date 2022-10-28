@@ -1,0 +1,14 @@
+<p>user-data works!</p>
+<span *ngIf="user; else noUser">
+    <h6>{{user|json}}</h6>
+</span>
+
+<ng-template #noUser>
+    No user
+</ng-template>
+
+<h1>{{id}}</h1>
+&nbsp;
+<span *ngIf="allowEdit">
+    <a [routerLink]="['../edit',id]">Edit</a>
+</span>

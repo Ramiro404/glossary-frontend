@@ -1,0 +1,20 @@
+<h1>Login</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="email">Email</label>
+    <input type="email" formControlName="email"/>
+    <span *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        <p *ngIf="form.get('email')?.hasError('email')">Invalida email</p>
+        <p *ngIf="form.get('email')?.hasError('required')">Email required</p>
+    </span>
+
+    <label for="password">Password</label>
+    <input type="password" formControlName="password"/>
+    <span *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+        <p *ngIf="form.get('password')?.hasError('required')">Password required</p>
+    </span>
+
+    <button type="submit">Login</button>
+    <br>
+    <a routerLink="../register">Don't you have an account? Create one</a>
+    <a routerLink="../send-email">Did you forget your password?</a>
+</form>

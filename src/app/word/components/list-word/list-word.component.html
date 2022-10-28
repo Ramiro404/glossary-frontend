@@ -1,0 +1,9 @@
+<p>list-word works!</p>
+    <span
+        *ngFor="let word of words">
+        <a [routerLink]="['../',word.categoryId, word.id]">{{word.word}}</a>&nbsp;
+        <a [routerLink]="['../edit',word.categoryId, word.id]">Edit</a>&nbsp;
+        <button type="button" (click)="onDelete(word.id)">Delete</button>
+
+    </span>
+<p *ngIf="words.length === 0">You have no words <a [routerLink]="['../new-word',categoryId]">Create one</a></p>

@@ -1,0 +1,16 @@
+<p>word-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Word</label>
+    <input formControlName="word"/>
+    <span *ngIf="this.form.get('word')?.touched && this.form.get('word')?.invalid">
+        <p *ngIf="this.form.get('word')?.hasError('required')">Word required</p>
+    </span>
+
+    <label>Description</label>
+    <textarea formControlName="description"></textarea>
+    <span *ngIf="this.form.get('description')?.touched && this.form.get('description')?.invalid">
+        <p *ngIf="this.form.get('description')?.hasError('required')">Description required</p>
+    </span>
+
+    <button type="submit">{{btnTypeForm}}</button>
+</form>

@@ -1,0 +1,24 @@
+<p>edit-user works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Name</label>
+    <input type="text" formControlName="name"/>
+    <span *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+        <p *ngIf="form.get('name')?.hasError('required')">Name required</p>
+    </span>
+
+    <label>Lastname</label>
+    <input type="text" formControlName="lastname"/>
+    <span *ngIf="form.get('lastname')?.touched && form.get('lastname')?.invalid">
+        <p *ngIf="form.get('lastname')?.hasError('required')">Lastname required</p>
+    </span>
+
+    <label>Email</label>
+    <input type="email" formControlName="email"/>
+    <span *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+        <p *ngIf="form.get('email')?.hasError('required')">Email required</p>
+    </span>
+
+
+
+    <button type="submit">Save changes</button>
+</form>

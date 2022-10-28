@@ -1,0 +1,6 @@
+<p>category-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="name">Name</label>
+    <input type="text" formControlName="name"/>
+    <button type="submit">{{btnTypeForm}}</button>
+</form>
