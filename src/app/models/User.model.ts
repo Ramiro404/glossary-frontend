@@ -3,5 +3,6 @@ export interface User{
     name:string,
     lastname:string,
     email:string,
-    passwor:string
+    password:string,
+    createdAt?:Date
 }

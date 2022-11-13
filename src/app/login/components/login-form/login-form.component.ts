@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
       this.loginService.loginAndGet(credential).subscribe(
         ()=>{
           this.router.navigate(['/']);
-        }, err => alert(err)
+        }, err => alert('Email or password incorret')
       );
     }else{
       this.form.markAllAsTouched();

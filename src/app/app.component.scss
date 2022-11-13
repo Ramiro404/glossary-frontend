@@ -1,0 +1,52 @@
+#background{
+  background: linear-gradient(135deg,
+  rgba(255, 0, 0, 0.749) 0%,
+  rgba(255, 154, 0, 0.75) 10%,
+  rgba(208, 222, 33, 0.75) 20%,
+  rgba(79, 220, 74, 0.75) 30%,
+  rgba(63, 218, 216, 0.75) 40%,
+  rgba(47, 201, 226, 0.75) 50%,
+  rgba(28, 127, 238, 0.75) 60%,
+  rgba(95, 21, 242, 0.75) 70%,
+  rgba(186, 12, 248, 0.75) 80%,
+  rgba(251, 7, 217, 0.75) 90%,
+  rgba(255, 0, 0, 0.75) 100%), url('/assets/Backgroud.jpg') no-repeat center center / cover;
+  height: 100%;
+}
+
+
+#background-not-used {
+  background: linear-gradient(270deg, #ff0000, #ff9a00, #d0de21, #4fdc4a, #3fdad8, #2fc9e2, #1c7fee, #5f15f2, #ba0cf8, #fb07d9, #ff0000);
+  background-size: 2200% 2200%;
+  height: 100%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+/*
+#background{
+  background-image: url('/assets/Backgroud.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+*/

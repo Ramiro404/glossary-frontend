@@ -12,12 +12,14 @@ import { WordService } from 'src/app/services/word.service';
 export class WordDetailComponent implements OnInit {
   word!:Word;
   errMsg = "";
+  descriptionFormatted = "";
   constructor(
     private wordService:WordService,
     private route:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+
     this.loadData();
   }
 
@@ -29,6 +31,10 @@ export class WordDetailComponent implements OnInit {
           this.wordService.findOne(wordId).subscribe(
             (data)=>{
               this.word = data;
+              const updateWord:Partial<Word> = { lastTimeStudied: new Date()};
+              this.wordService.update(this.word.id, updateWord).subscribe(
+                ()=>{}
+              )
             },
             (err:HttpErrorResponse)=>{
               this.errMsg=err.message;
@@ -37,7 +43,7 @@ export class WordDetailComponent implements OnInit {
         }
       }
     )
-    
+
   }
 
 }

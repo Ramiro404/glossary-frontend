@@ -1,2 +1,11 @@
-<p>word-detail works!</p>
-{{word | json}}
+<div class="container col-sm-6">
+  <div id="paper" *ngIf="word">
+    <div id="pattern">
+      <div id="content">
+        <h1 class="display-3" >{{word.word}}</h1>
+        <p id="desc">{{word.description}}</p>
+        <p class="lead">Last time studied: {{word.lastTimeStudied | date: 'short'}}</p>
+      </div>
+    </div>
+  </div>
+</div>

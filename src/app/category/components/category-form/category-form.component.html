@@ -1,6 +1,16 @@
-<p>category-form works!</p>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <label for="name">Name</label>
-    <input type="text" formControlName="name"/>
-    <button type="submit">{{btnTypeForm}}</button>
-</form>
+<div class="container col-sm-3 card bg-light p-3">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Category</legend>
+    </fieldset>
+    <div class="form-group">
+      <label class="form-label" for="name">Name</label>
+      <input class="form-control" type="text" formControlName="name" />
+      <span class="text-danger" *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+        <p *ngIf="form.get('name')?.hasError('required')">Category name required</p>
+      </span>
+      <button class="btn btn-outline-primary mt-3" type="submit">{{btnTypeForm}}</button>&nbsp;
+      <a class="btn btn-light mt-3" routerLink="../../">Cancel</a>
+    </div>
+  </form>
+</div>

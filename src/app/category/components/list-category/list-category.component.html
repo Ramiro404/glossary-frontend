@@ -1,14 +1,21 @@
-<p>list-category works!</p>
-<a routerLink="new-category">Create new category</a>
-<ul>
-    <li 
-        *ngFor="let cat of categories">
-        <a [routerLink]="['../word',cat.id]">{{cat.name}}</a>
-        <a [routerLink]="['update-category',cat.id]">Edit</a>
-        <button type="button" (click)="onDelete(cat.id)">Delete</button>
-    </li>
-</ul>
+<a class="btn btn-primary btn-ld" routerLink="new-category">Create new category</a>
+
+<div class="container">
+  <div class="row">
+    <div (mouseenter)="makeSound()" class="card bg-light mb-3" style="max-width: 20rem;" *ngFor="let cat of categories">
+      <div class="card-header">
+        <h2 ><a  [routerLink]="['../word',cat.id]">{{cat.name}}</a></h2>
+      </div>
+      <div class="card-body">
+        <a class="btn btn-outline-info" [routerLink]="['update-category',cat.id]">Edit</a>
+        <!-- <button class="btn btn-outline-danger" type="button" (click)="onDelete(cat.id)">Delete</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
 <p *ngIf="categories.length === 0">
-    You have no categories. <a routerLink="new-category">Create one</a>
+  You have no categories. <a routerLink="new-category">Create one</a>
 </p>
 <p>{{errorMsg}}</p>
+<audio id="audio" src="/assets/sounds/mixkit-page-turn-single-1104.wav"></audio>

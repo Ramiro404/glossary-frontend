@@ -2,6 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { OnExit } from 'src/app/guards/exit.guard';
 import { User } from 'src/app/models/User.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.scss']
 })
-export class EditUserComponent implements OnInit {
+export class EditUserComponent implements OnInit, OnExit {
   form:FormGroup;
   errorMsg="";
   id:string | null=null;
@@ -19,12 +21,16 @@ export class EditUserComponent implements OnInit {
     private userService:UserService,
     private router:Router,
     private route:ActivatedRoute
-  ) { 
+  ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
       lastname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
     });
+  }
+  onExit(): boolean | Promise<boolean> | Observable<boolean> {
+    const exit = confirm('You are going to leave without save changes, confirm to exit.')
+    return exit;
   }
 
   ngOnInit(): void {

@@ -1,0 +1,20 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="question.controlType">
+    <div *ngSwitchCase="'radio'">
+      <p [id]="question.key">{{question.label}}</p>
+      <span class="form-check"
+        *ngFor="let opt of question.options">
+          <label class="form-check-label" [for]="opt.id">{{opt.label}}</label>
+          <input
+          class="form-check-input"
+            [type]="question.controlType"
+            [value]="opt.value"
+            [formControlName]="opt.key"
+            [name]="opt.key"
+            [id]="opt.id" />
+      </span>
+
+    </div>
+  </div>
+
+</div>

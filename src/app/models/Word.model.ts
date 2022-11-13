@@ -3,5 +3,6 @@ export interface Word{
     word:string,
     description:string,
     lastTimeStudied:Date,
-    categoryId:string
+    categoryId:string,
+    color?:string
 }

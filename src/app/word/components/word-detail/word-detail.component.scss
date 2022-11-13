@@ -1,0 +1,44 @@
+#desc{
+  white-space: pre-line
+}
+
+#paper{
+  margin: 1rem;
+  background-color: rgb(231, 199, 58);
+  box-shadow: 0px 0px 5px 0px #888;
+  position: relative;
+}
+
+#paper::before{
+  content: '';
+  width: 0.25rem;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  background-color: rgba(255,0,0,0.6);
+}
+
+#pattern {
+  height: 100%;
+  background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+}
+
+#content {
+  padding-top: 6px;
+  padding-left: 56px;
+  padding-right: 16px;
+  line-height: 25px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 19px;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+}
+
+/*
+
+paper ffeea5 lines 232,215,146
+paper white lines teal
+
+
+*/

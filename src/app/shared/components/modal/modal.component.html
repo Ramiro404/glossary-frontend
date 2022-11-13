@@ -1,0 +1,43 @@
+<!-- <div class="modal-container">
+  <div
+    style="
+      width: 500px;
+      height: auto;
+      border: olive 1px solid;
+      background-color: white;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    "
+  >
+    <h1 class="title">{{ title }}</h1>
+    <p class="body">{{ body }}</p>
+    <div class="btn-container">
+      <button (click)="closeMe()">close</button>
+      <button (click)="confirm()">Confirm</button>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{title}}</h5>
+        <button type="button" (click)="closeMe()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{body}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="confirm()" class="btn btn-primary" >Confirm</button>
+        <button type="button" (click)="closeMe()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

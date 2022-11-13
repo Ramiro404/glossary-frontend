@@ -21,6 +21,21 @@ export class ListCategoryComponent implements OnInit {
     this.loadData();
   }
 
+  toggle(){
+    const div:HTMLDivElement|null = document.querySelector('#culo');
+    if(div){
+      div.style.display = 'block';
+    }
+
+  }
+
+  untoggle(){
+    const div:HTMLDivElement|null = document.querySelector('#culo');
+    if(div){
+      div.style.display = 'block';
+    }
+  }
+
   loadData(): void{
     const id = this.tokenService.getUserId();
     if(id){
@@ -35,7 +50,7 @@ export class ListCategoryComponent implements OnInit {
     }else{
       this.errorMsg="You are not authorized"
     }
-    
+
   }
 
   onDelete(id:string):void{
@@ -49,6 +64,9 @@ export class ListCategoryComponent implements OnInit {
     )
   }
 
-
+  makeSound(): void {
+    const audio:HTMLAudioElement | null =  document.querySelector("#audio");
+    if(audio) audio.play();
+  }
 
 }

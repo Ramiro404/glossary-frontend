@@ -1,9 +1,35 @@
-<p>list-word works!</p>
-    <span
+<a class="btn btn-primary btn-lg" [routerLink]="['../new-word',categoryId]">Create one</a>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div (mouseenter)="makeSound()" [style.background-color]="word.color" class="post-it mb-3" *ngFor="let word of words">
+        <div class="card-header">
+          <h3><a [routerLink]="['../',word.categoryId, word.id]">{{word.word}}</a></h3>
+          <p>{{word.lastTimeStudied | date: 'short'}}</p>
+          <h5><a class="btn btn-link text-info" [routerLink]="['../edit',word.categoryId, word.id]"><i class="bi bi-pencil-fill"></i></a>
+          <button class="btn btn-link text-danger" type="button" (click)="openModalDelete(word)"><i class="bi bi-trash3-fill"></i></button></h5>
+        </div>
+    </div>
+  </div>
+  <div *ngIf="words.length === 0" class="alert alert-dismissible alert-info text-center">
+    You have no words for this category <a class="alert-link" [routerLink]="['../new-word',categoryId]">Create one</a>
+  </div>
+</div>
+
+<!-- <span
         *ngFor="let word of words">
         <a [routerLink]="['../',word.categoryId, word.id]">{{word.word}}</a>&nbsp;
         <a [routerLink]="['../edit',word.categoryId, word.id]">Edit</a>&nbsp;
         <button type="button" (click)="onDelete(word.id)">Delete</button>
+    </span> -->
+<!-- <p *ngIf="words.length === 0">You have no words <a [routerLink]="['../new-word',categoryId]">Create one</a></p> -->
 
-    </span>
-<p *ngIf="words.length === 0">You have no words <a [routerLink]="['../new-word',categoryId]">Create one</a></p>
+
+<audio id="audio" src="/assets/sounds/mixkit-paper-slide-1530.wav"></audio>
+
+
+<div class="modal-container">
+  <!-- <button (click)="openModal()">Delete me</button> -->
+  <div #modal></div>
+</div>

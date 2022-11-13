@@ -1,0 +1,23 @@
+.post-it {
+  padding: 1.5rem;
+  max-width: 250px;
+  max-height: 250px;
+  background-color: lightgreen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 11px 24px -4px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: 0px 11px 24px -4px rgba(0, 0, 0, 0.53);
+  -moz-box-shadow: 0px 11px 24px -4px rgba(0, 0, 0, 0.53);
+  transform: rotateZ(-5deg) rotateX(-14deg);
+  transition: 0.5s;
+}
+
+.post-it:hover{
+  transform: rotateZ(0deg) rotateX(0deg);
+}
+
+.modal-container{
+  display: flex;
+  justify-content: center;
+}

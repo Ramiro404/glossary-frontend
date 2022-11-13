@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Word } from 'src/app/models/Word.model';
+import { TokenService } from 'src/app/services/token.service';
 import { WordService } from 'src/app/services/word.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { WordService } from 'src/app/services/word.service';
 export class WordFormComponent implements OnInit {
   form: FormGroup;
   id: string | null = null;
+  userId:string | null = null;
   categoryId!: string;
   btnTypeForm:string = "";
   errMsg = "";
@@ -20,12 +22,14 @@ export class WordFormComponent implements OnInit {
     private fb: FormBuilder,
     private wordService: WordService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private tokenService:TokenService
   ) {
     this.form = this.fb.group({
       word: ['', [Validators.required]],
       description: ['', Validators.required]
-    })
+    });
+    this.userId = this.tokenService.getUserId();
   }
 
   ngOnInit(): void {
@@ -91,6 +95,22 @@ export class WordFormComponent implements OnInit {
         this.errMsg = err.message;
       }
     )
+  }
+
+  onBold(): void{
+    let seletedText = "";
+    seletedText = window.getSelection()?.toString() || "";
+    let description = this.form.get('description')?.value as string;
+    const newDesc = description.replace(seletedText, `<b>${seletedText}</b>`);
+    this.form.patchValue({newDesc});
+    //document.execCommand('bold');
+    console.log(seletedText);
+  }
+  onItalics(): void {
+
+  }
+  onSubs(): void {
+
   }
 
 }

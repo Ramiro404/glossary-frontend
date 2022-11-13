@@ -10,14 +10,15 @@ const routes: Routes = [
     children: [
       { path: '', title:'Glossary App', component:HomePageComponent},
       { path: 'auth', title: 'Iniciar sesión', loadChildren: () => import('../login/login.module').then(m => m.LoginModule) },
-      { 
-        path: 'category', 
-        title: 'Categorias', 
-        loadChildren: 
+      {
+        path: 'category',
+        title: 'Categorias',
+        loadChildren:
           () => import('../category/category.module').then(m => m.CategoryModule),
         canActivate: [AuthGuard] },
       { path: 'word', title:'Word', loadChildren: ()=>import('../word/word.module').then(m => m.WordModule)},
-      { path: 'profile', title:'Profile', loadChildren: ()=> import('../profile/profile.module').then(m => m.ProfileModule)}
+      { path: 'profile', title:'Profile', loadChildren: ()=> import('../profile/profile.module').then(m => m.ProfileModule)},
+      { path: 'question', title: 'Question', loadChildren: ()=> import('../question/question.module').then(m => m.QuestionModule)}
     ]
   }
 

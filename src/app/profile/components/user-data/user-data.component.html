@@ -1,14 +1,16 @@
-<p>user-data works!</p>
-<span *ngIf="user; else noUser">
-    <h6>{{user|json}}</h6>
-</span>
+<div class="container col-sm-3 ">
+  <span *ngIf="user; else noUser">
+    <div class="list-group">
+      <a class="list-group-item list-group-item-action active">{{user.name}} {{user.lastname}}
+        <span *ngIf="allowEdit">
+          <a class="btn btn-secondary" [routerLink]="['../edit',id]">Edit</a>
+        </span></a>
+      <a class="list-group-item list-group-item-action">Email {{user.email}}</a>
+      <a class="list-group-item list-group-item-action">Since {{user.createdAt | date:'short'}}</a>
+    </div>
+  </span>
 
-<ng-template #noUser>
+  <ng-template #noUser>
     No user
-</ng-template>
-
-<h1>{{id}}</h1>
-&nbsp;
-<span *ngIf="allowEdit">
-    <a [routerLink]="['../edit',id]">Edit</a>
-</span>
+  </ng-template>
+</div>

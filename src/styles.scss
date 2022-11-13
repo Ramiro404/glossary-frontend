@@ -11257,3 +11257,16 @@ pre {
 .img-thumbnail {
   border-radius: 255px 25px 225px 25px/25px 225px 25px 255px;
 }
+
+body, html{
+  height: 100%;
+}
+
+.ng-modal{
+  width: 500px;
+  height: auto;
+  position: relative;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+}
