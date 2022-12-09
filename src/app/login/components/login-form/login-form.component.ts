@@ -12,6 +12,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginFormComponent implements OnInit {
   form:FormGroup;
+  isError:boolean = false;
   constructor(
     private fb:FormBuilder,
     private loginService:LoginService,
@@ -33,11 +34,15 @@ export class LoginFormComponent implements OnInit {
       this.loginService.loginAndGet(credential).subscribe(
         ()=>{
           this.router.navigate(['/']);
-        }, err => alert('Email or password incorret')
+        }, err => this.isError = true
       );
     }else{
       this.form.markAllAsTouched();
     }
+  }
+
+  closeMsgError() {
+    this.isError = false;
   }
 
 }

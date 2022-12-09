@@ -13,12 +13,13 @@
 
     <div class="form-group">
       <label class="form-label">Description</label>
-      <div class="btn-group" role="group">
+      <!-- <div class="btn-group" role="group">
         <button type="button" (click)="onBold()" class="btn btn-outline-dark"><b>N</b></button>
         <button type="button" (click)="onItalics()" class="btn btn-outline-dark"><i>I</i></button>
         <button type="button" (click)="onSubs()" class="btn btn-outline-dark"><sub>S</sub></button>
-      </div>
+      </div> -->
       <textarea class="form-control" formControlName="description" rows="3"></textarea>
+      <!--<angular-editor [config]="editorConfig" [placeholder]="'Your text'" formControlName="description"></angular-editor>-->
       <!-- <div id="textarea" class="form-control" formControlName="description" contenteditable>{{form.get('description')?.value}}</div> -->
       <span class="text-danger" *ngIf="this.form.get('description')?.touched && this.form.get('description')?.invalid">
         <p *ngIf="this.form.get('description')?.hasError('required')">Description required</p>

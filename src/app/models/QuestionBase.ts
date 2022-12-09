@@ -16,7 +16,7 @@ export class QuestionBase<T> {
       order?: number;
       controlType?: string;
       type?: string;
-      options?: {key: string, value: string, label: string, id:string}[];
+      options?: {key: string, value: string, label: string, isCorrect: boolean, id:string}[];
     } = {}) {
     this.value = options.value;
     this.key = options.key || '';

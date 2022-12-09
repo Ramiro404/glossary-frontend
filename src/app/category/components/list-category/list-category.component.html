@@ -1,21 +1,27 @@
 <a class="btn btn-primary btn-ld" routerLink="new-category">Create new category</a>
 
 <div class="container">
-  <div class="row">
-    <div (mouseenter)="makeSound()" class="card bg-light mb-3" style="max-width: 20rem;" *ngFor="let cat of categories">
-      <div class="card-header">
-        <h2 ><a  [routerLink]="['../word',cat.id]">{{cat.name}}</a></h2>
-      </div>
-      <div class="card-body">
-        <a class="btn btn-outline-info" [routerLink]="['update-category',cat.id]">Edit</a>
-        <!-- <button class="btn btn-outline-danger" type="button" (click)="onDelete(cat.id)">Delete</button> -->
+  <div class="row row-cols-md-4 row-cols-2">
+    <div class="category-container p-1" *ngFor="let cat of categories">
+      <div (mouseenter)="makeSound()" class="card bg-light" >
+        <div class="card-header">
+          <h2><a [routerLink]="['../word',cat.id]">{{cat.name}}</a></h2>
+        </div>
+        <div class="card-body">
+          <a class="btn btn-outline-info" [routerLink]="['update-category',cat.id]">Edit</a>
+          <!-- <button class="btn btn-outline-danger" type="button" (click)="onDelete(cat.id)">Delete</button> -->
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<p *ngIf="categories.length === 0">
-  You have no categories. <a routerLink="new-category">Create one</a>
-</p>
-<p>{{errorMsg}}</p>
+<div *ngIf="categories.length === 0" class="alert alert-dismissible alert-secondary">
+  <strong>You have no categories</strong> <a routerLink="new-category" class="alert-link">Create one</a>
+</div>
+
+<div *ngIf="errorMsg !== ''" class="alert alert-dismissible alert-danger">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>{{errorMsg}}</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+</div>
 <audio id="audio" src="/assets/sounds/mixkit-page-turn-single-1104.wav"></audio>

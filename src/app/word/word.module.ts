@@ -7,6 +7,7 @@ import { WordPageComponent } from './pages/word-page/word-page.component';
 import { WordDetailComponent } from './components/word-detail/word-detail.component';
 import { WordFormComponent } from './components/word-form/word-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    AngularEditorModule,
     ReactiveFormsModule,
     WordRoutingModule
   ]

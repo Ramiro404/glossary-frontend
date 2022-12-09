@@ -7,6 +7,7 @@ import { DynamicFormQuestionComponent } from './components/dynamic-form-question
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionPageComponent } from './pages/question-page/question-page.component';
 import { DynamicFormBuilderComponent } from './components/dynamic-form-builder/dynamic-form-builder.component';
+import { DynamicFormBuilderQuestionComponent } from './components/dynamic-form-builder-question/dynamic-form-builder-question.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DynamicFormBuilderComponent } from './components/dynamic-form-builder/d
     DynamicFormComponent,
     DynamicFormQuestionComponent,
     QuestionPageComponent,
-    DynamicFormBuilderComponent
+    DynamicFormBuilderComponent,
+    DynamicFormBuilderQuestionComponent
   ],
   imports: [
     CommonModule,

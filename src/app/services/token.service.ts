@@ -24,10 +24,11 @@ export class TokenService {
     }else{
       return null;
     }
-    
+
   }
   deleteToken(): void{
     localStorage.removeItem('glossary_app');
+    window.location.reload();
   }
 
 }

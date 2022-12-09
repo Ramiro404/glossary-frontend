@@ -1,0 +1,12 @@
+<p>dynamic-form-builder-question works!</p>
+<div [formGroup]="form">
+  <div [ngSwitch]="question.controlType">
+    <div *ngSwitchCase="'radio'">
+      <input type="text" [id]="question.key" [formControlName]="question.key" value="{{question.key}}">
+      <span class="form-check" *ngFor="let opt of question.options">
+        <label class="form-check-label" [for]="opt.id">{{opt.label}}</label>
+        <input class="" type="text" [value]="opt.value" [formControlName]="opt.key" [name]="opt.key" [id]="opt.id" />
+      </span>
+    </div>
+  </div>
+</div>

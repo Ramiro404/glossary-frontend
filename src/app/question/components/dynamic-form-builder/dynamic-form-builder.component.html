@@ -1,7 +1,40 @@
-<p>dynamic-form-builder works!</p>
-<button type="button" class="btn btn-dark">Add question</button>
-<pre></pre>
-<div class="form-group">
-  <label class="col-form-label mt-4" for="inputDefault">Default input</label>
-  <input type="text" class="form-control" placeholder="Default input" id="inputDefault">
+<div class="container col-sm-5 card bg-light p-3">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div formArrayName="questions">
+      <div *ngFor="let question of questions.controls; let questionIndex = index">
+        <div class="form-group" [formGroupName]="questionIndex">
+          <label class="form-label">Question #{{questionIndex+1}}</label>
+          <input class="form-control form-control-lg mb-2" type="text" formControlName="question" placeholder="Write...">
+          <button class="btn btn-outline-danger mb-2" (click)="deleteQuestion(questionIndex)">Delete question</button>
+          <div formArrayName="answers">
+            <div *ngFor="let answer of getQuestionAnswer(questionIndex).controls; let answerIndex = index">
+              <div class="answers-container mb-2" [formGroupName]="answerIndex">
+                <div class="answer-field">
+                  <div class="form-group col-10">
+                    <input class="form-control answer" type="text" formControlName="answer"
+                      placeholder="Answer #{{answerIndex+1}}">
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="isCorrect">
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-danger" (click)="deleteAnswer(questionIndex, answerIndex)">X</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-grid mb-2">
+            <button class="btn btn-outline-info" (click)="addAnswer(questionIndex)">Add answer</button>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid">
+        <button class="btn btn-lg btn-outline-dark" (click)="addQuestion()">Add question</button>
+      </div>
+    </div>
+  </form>
 </div>
+
+
+{{this.form.value | json}}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { ListWordComponent } from './components/list-word/list-word.component';
 import { WordDetailComponent } from './components/word-detail/word-detail.component';
 import { WordFormComponent } from './components/word-form/word-form.component';
@@ -7,7 +8,7 @@ import { WordPageComponent } from './pages/word-page/word-page.component';
 
 const routes: Routes = [
   {
-    path:'', component:WordPageComponent,
+    path:'', component:WordPageComponent, canActivate: [AuthGuard],
       children: [
         {path: 'new-word/:category', component: WordFormComponent},
         {path: ':category', component: ListWordComponent },

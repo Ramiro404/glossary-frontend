@@ -1,0 +1,13 @@
+.answer-field{
+  display: flex;
+  flex-direction: row;
+}
+
+answers-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.answer{
+  width: 100%;
+}
