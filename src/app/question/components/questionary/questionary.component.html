@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" #quizForm="ngForm" *ngIf="!showResults">
+  <div *ngIf="currentQuestion">
+    <h2>{{currentQuestion.question}}</h2>
+    <div *ngFor="let answer of currentQuestion.answers">
+      <label>{{answer.answer}}</label>
+      <input [type]="currentQuestion.control" [(ngModel)]="answer.isSelected" name="" id="" [ngModelOptions]="{standalone: true}">
+    </div>
+  </div>
+
+
+  <button type="button" (click)="nextQuestion()" [disabled]="btnNext">Next</button>&nbsp;
+  <button type="submit" [disabled]="btnSubmit">Submit</button>
+</form>
+
+<div *ngIf="showResults">
+  <app-quiz-results [quiz]="quiz"></app-quiz-results>
+</div>

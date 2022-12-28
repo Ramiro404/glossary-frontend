@@ -1,0 +1,14 @@
+
+<h3>{{ hits }} / {{ totalHits }}</h3>
+<div *ngFor="let question of quiz">
+  <h2>{{ question.question }}</h2>
+
+  <p
+  *ngFor="let answer of question.answers"
+  [ngClass]="{
+    'text-success': answer.isCorrect && answer.isSelected,
+    'text-danger': !answer.isCorrect && answer.isSelected,
+    'card border-primary': answer.isSelected}">
+    {{answer.answer}}
+  </p>
+</div>

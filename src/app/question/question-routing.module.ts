@@ -4,12 +4,18 @@ import { AuthGuard } from '../guards/auth.guard';
 import { ExitGuard } from '../guards/exit.guard';
 import { DynamicFormBuilderComponent } from './components/dynamic-form-builder/dynamic-form-builder.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { EditQuestionaryComponent } from './components/edit-questionary/edit-questionary.component';
+import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
+import { QuestionaryComponent } from './components/questionary/questionary.component';
 import { QuestionPageComponent } from './pages/question-page/question-page.component';
 
 const routes: Routes = [
   {path: '', component: QuestionPageComponent, canActivate: [AuthGuard], children: [
-    {path: '', component: DynamicFormComponent},
-    {path: 'create', component: DynamicFormBuilderComponent, canDeactivate: [ExitGuard]}
+    { path: 'categories', component: ListCategoriesComponent},
+    {path: 'form/:id', component: DynamicFormComponent},
+    {path: 'create/:id', component: DynamicFormBuilderComponent, canDeactivate: [ExitGuard]},
+    {path: 'edit/:id', component: EditQuestionaryComponent, canDeactivate: [ExitGuard]},
+    {path: 'quiz/:id', component: QuestionaryComponent}
   ]}
 ];
 

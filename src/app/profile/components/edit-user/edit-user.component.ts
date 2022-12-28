@@ -59,7 +59,6 @@ export class EditUserComponent implements OnInit, OnExit {
   onSubmit():void{
     if(this.form.valid){
       const user:Partial<User> = this.form.getRawValue();
-      console.log(user)
       this.userService.update(this.id||"0",user).subscribe(
         (data)=>{
           this.router.navigate(['../profile',this.id]);

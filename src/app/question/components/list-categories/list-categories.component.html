@@ -1,0 +1,10 @@
+<p>list-categories works!</p>
+<ul>
+    <li *ngFor="let category of categories">
+        <h3>{{category.name}}</h3>
+        <a class="btn btn-primary" [routerLink]="['../create', category.id]">Create</a>
+        <a class="btn btn-secondary" [routerLink]="['../quiz', category.id]">Show form</a>
+        <a class="btn btn-success" [routerLink]="['../edit', category.id]">Edit form</a>
+
+    </li>
+</ul>

@@ -1,5 +1,6 @@
+<a [routerLink]="['/create', categoryId]">New questionary</a>
 <div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="form">
       <div *ngFor="let question of questions">
           <app-dynamic-form-question
               [question]="question"
@@ -7,7 +8,7 @@
       </div>
 
       <div>
-          <button type="submit" [disabled]="form.invalid">Save</button>
+          <button type="submit" [disabled]="form.invalid">Submit</button>
       </div>
   </form>
 

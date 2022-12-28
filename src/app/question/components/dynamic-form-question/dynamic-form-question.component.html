@@ -1,20 +1,21 @@
 <div [formGroup]="form">
   <div [ngSwitch]="question.controlType">
-    <div *ngSwitchCase="'radio'">
-      <p [id]="question.key">{{question.label}}</p>
+    <div *ngSwitchCase="'checkbox'">
+      <p>{{question.label}}</p>
       <span class="form-check"
         *ngFor="let opt of question.options">
-          <label class="form-check-label" [for]="opt.id">{{opt.label}}</label>
+          <label class="form-check-label">{{opt.key}}</label>
           <input
           class="form-check-input"
             [type]="question.controlType"
-            [value]="opt.value"
-            [formControlName]="opt.key"
-            [name]="opt.key"
-            [id]="opt.id" />
+            [formControlName]="question.key"
+            [name]="question.key"
+            [value]="opt.key"/>
       </span>
 
     </div>
   </div>
 
 </div>
+
+{{ form.getRawValue() | json }}

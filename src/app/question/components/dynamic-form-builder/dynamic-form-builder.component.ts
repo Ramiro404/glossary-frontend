@@ -7,6 +7,8 @@ import { RadioQuestion } from 'src/app/models/QuestionRadio';
 import { QuestionControlService } from 'src/app/services/question-control.service';
 import { QuestionService } from 'src/app/services/question.service';
 import { Validator } from 'src/app/utils/Validator';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dynamic-form-builder',
@@ -15,8 +17,13 @@ import { Validator } from 'src/app/utils/Validator';
 })
 export class DynamicFormBuilderComponent implements OnInit, OnExit {
   form:FormGroup;
+  canExit: boolean = false;
+  categoryId: number| null = null;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private questionService: QuestionService,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {
     this.form = this.fb.group({
       questions: this.fb.array([])
@@ -24,11 +31,18 @@ export class DynamicFormBuilderComponent implements OnInit, OnExit {
   }
 
   onExit(): boolean | Observable<boolean> | Promise<boolean> {
+    if(this.canExit) return true;
     const exit = confirm('You are going to leave without save changes, confirm to exit.');
     return exit;
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe( (params) => {
+      let id = params.get('id')
+      if(id) {
+        this.categoryId = +id;
+      }
+    })
   }
 
   get questions(): FormArray {
@@ -70,7 +84,29 @@ export class DynamicFormBuilderComponent implements OnInit, OnExit {
 
 
   onSubmit(){
-    console.log(this.form.value);
+    console.log(this.form.value, ' ', this.categoryId);
+
+
+    if(this.form.valid && this.categoryId){
+      const questions = this.form.value.questions.map((question: any) => {
+        return {
+          ...question,
+          categoryId: this.categoryId
+        }
+      });
+
+      this.questionService.saveQuestions(questions).subscribe(
+        (response) => {
+          this.canExit =true;
+          this.router.navigateByUrl('question/categories');
+        },
+        (error: HttpErrorResponse) => {
+          console.error(error)
+        }
+      )
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
 }

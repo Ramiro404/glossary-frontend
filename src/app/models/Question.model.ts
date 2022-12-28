@@ -1,11 +1,20 @@
+// export interface IQuestion {
+//   id: number,
+//   label: string,
+//   name: string,
+//   value: string,
+//   answers: IAnswer,
+// }
+
 export interface IQuestion {
   id: number,
-  label: string,
-  name: string,
-  value: string,
-  answers: Answer,
+  question: string,
+  control: 'checkbox' | 'radio',
+  answers: IAnswer[]
 }
-
-export interface Answer extends IQuestion {
-  isCorrect: boolean
+export interface IAnswer{
+  id: number,
+  answer: string,
+  isCorrect: boolean,
+  isSelected: boolean
 }
